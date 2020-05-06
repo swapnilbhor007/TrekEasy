@@ -1,0 +1,114 @@
+<!-- <div class='card'>
+     <div class='card-header'>
+        {{pageTitle}}
+    </div> 
+<div class='card-body'>
+    <div class='row'>
+        <div class='col-md-2'> Filter By:</div>
+        <div class='col-md-8'><input type='text' [(ngModel)]='listFilter' /></div>
+        <div class='col-md-2'> Filtered By: {{listFilter}}</div>
+    </div>
+</div>
+<div class='table-responsive'>
+    <table class='table' *ngIf='treks && treks.length'>
+        <thead>
+            <tr>
+                <th><button class='btn btn-primary' (click)='toggleImage()' >  {{showImage ? 'Hide' : 'Show'}} Image</button> </th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Difficulty Level</th>
+                <th>Rating</th>
+                <th>Price</th>
+            </tr>  
+        </thead>
+        <tbody>
+            <tr *ngFor='let trek of filteredTreks'>
+                <td><img *ngIf='showImage' [src] = 'trek.imageURL' [title] = 'trek.name' [style.width.px] = 'previewWidth' [style.margin.px] = 'previewMargin'></td>
+                <td><a [routerLink]="['/trek', trek.id]">{{trek.name | convertToSpaces:'-'}}</a></td>
+                <td>{{trek.location}}</td>
+                <td>{{trek.level}}</td>
+                <td><app-star [rating] = 'trek.rating' (ratingClicked) ='onRatingClicked($event)'></app-star></td>
+                <td>{{trek.price | currency:'INR':'symbol':'1.2-2'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div> -->
+
+<!-- start banner Area -->
+<app-banner [title]='pageTitle'></app-banner>
+<!-- End banner Area -->
+
+<!-- Start destinations Area -->
+<section class="destinations-area section-gap">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Popular Destinations</h1>
+                    <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast,
+                        day to.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf='treks && treks.length'>
+            <div class="col-lg-4" *ngFor='let trek of filteredTreks'>
+                <div class="single-destinations" [routerLink]="['/trek', trek.id]">
+                    <div class="thumb" style="height:180px!important">
+                        <img *ngIf='showImage' [src]='trek.imageURL' [title]='trek.name'>
+                    </div>
+                    <div class="details">
+                        <h4 class="d-flex justify-content-between">
+                            <span>{{trek.name | convertToSpaces:'-'}}</span>
+                            <app-star [rating]='trek.rating' (ratingClicked)='onRatingClicked($event)'></app-star>
+                        </h4>
+                        <p>
+                            {{trek.location}} | View on map | 49 Reviews
+                        </p>
+                        <ul class="package-list">
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>Activities</span>
+                                <span>{{trek.activities.toString()}}</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>Difficulty Level</span>
+                                <span>{{trek.level}}</span>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <span>Price per person</span>
+                                <a href="#" class="price-btn">{{trek.price | currency:'INR':'symbol':'1.2-2'}}</a>
+                            </li>           
+                        </ul>
+                        <!-- <a class="price-btn text-uppercase" (click)='onBookNow()'>Book Now</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End destinations Area -->
+
+<!-- Start home-about Area -->
+<section class="home-about-area">
+    <div class="container-fluid">
+        <div class="row align-items-center justify-content-end">
+            <div class="col-lg-6 col-md-12 home-about-left">
+                <h1>
+                    Did not find your Package? <br>
+                    Feel free to ask us. <br>
+                    We‘ll make it for you
+                </h1>
+                <p>
+                    inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct
+                    standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the
+                    job is beyond reproach. inappropriate behavior is often laughed.
+                </p>
+                <a [routerLink]='["/contact-us"]' class="primary-btn text-uppercase">request custom price</a>
+            </div>
+            <div class="col-lg-6 col-md-12 home-about-right no-padding">
+                <img class="img-fluid" src="../../assets/img/traveler-5.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End home-about Area -->

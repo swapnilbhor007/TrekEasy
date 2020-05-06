@@ -1,0 +1,131 @@
+<!-- start banner Area -->
+<app-banner [title]='pageTitle'></app-banner>
+<!-- End banner Area -->
+
+<!-- Start Content Area -->
+<section class="insurence-one-area section-gap">
+    <div class="container">
+        <div class="row align-items-center" *ngIf='trek'>
+            <div class="col-lg-6 insurence-left">
+                <img class="img-fluid img-one" [src]='trek.imageURL' [title]='trek.name'>
+            </div>
+            <div class="col-lg-6 insurence-right">
+                <!-- <a class="primary-btn text-uppercase" (click)='onBack()' style="float: right;">Back</a> -->
+                <a class="primary-btn text-uppercase" style="float: right;" *ngIf='trek.eventDate'>Book Now</a>
+                <h6 class="text-uppercase">Need to know</h6>
+                <h1>{{trek.name}}</h1>
+                <app-star [rating]='trek.rating'>
+                </app-star>
+                <p>
+                    {{trek.description}}
+                </p>
+                <h5>Key Attractions</h5>
+                <div class="list-wrap" *ngIf='trek.attractions.length'>
+                    <ul>
+                        <li *ngFor='let attraction of trek.attractions'>{{attraction.toString()}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Content Area -->
+
+<!--Start Timeline Area-->
+<app-timeline [id]='eventId'></app-timeline>
+<!--End Timeline Area-->
+
+<!-- Start popular-destination Area -->
+<section class="popular-destination-area section-gap">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-40 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Related Events</h1>
+                    <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast,
+                        day.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf='treks && treks.length'>
+            <div class="col-lg-4 pb-40" *ngFor='let trek of treks'>
+                <div class="single-destination relative" [routerLink]="['/trek', trek.id]">
+                    <div class="thumb relative">
+                        <div class="overlay overlay-bg"></div>
+                        <img class="img-fluid" [src]='trek.imageURL' [title]='trek.name' style="height:250px!important">
+                    </div>
+                    <div class="desc">
+                        <a href="#" class="price-btn" *ngIf='trek.eventDate'>{{trek.eventDate | date:'mediumDate'}}</a>
+                        <h4>{{trek.name}}</h4>
+                        <p>{{trek.location}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-lg-12">
+                <div class="alert-msg" style="text-align: left;"></div>
+                <a class="primary-btn text-uppercase" [routerLink]='["/treks"]' style="float: right;">More Events</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End popular-destination Area -->
+
+<!-- Start testimonial Area -->
+<section class="testimonial-area section-gap">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Testimonial from our Clients</h1>
+                    <p>The French Revolution constituted for the conscience of the dominant aristocratic class a fall
+                        from </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="active-testimonial">
+                <div class="single-testimonial item d-flex flex-row">
+                    <div class="thumb">
+                        <img class="img-fluid" src="../../assets/img/elements/user1.png" alt="">
+                    </div>
+                    <div class="desc">
+                        <p>
+                            Do you want to be even more successful? Learn to love learning and growth. The more effort
+                            you put into improving your skills, the bigger the payoff you.
+                        </p>
+                        <h4>Harriet Maxwell</h4>
+                        <div class="star">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-testimonial item d-flex flex-row">
+                    <div class="thumb">
+                        <img class="img-fluid" src="../../assets/img/elements/user2.png" alt="">
+                    </div>
+                    <div class="desc">
+                        <p>
+                            A purpose is the eternal condition for success. Every former smoker can tell you just how
+                            hard it is to stop smoking cigarettes. However.
+                        </p>
+                        <h4>Carolyn Craig</h4>
+                        <div class="star">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End testimonial Area -->

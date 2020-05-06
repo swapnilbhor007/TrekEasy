@@ -1,0 +1,22 @@
+<!-- Start Timeline Area -->
+<section class="insurence-one-area section-gap" *ngIf='schedule && schedule.schedule.length'>
+  <div class="container">
+      <div class="section-top-border">
+          <h3 class="mb-30">Schedule</h3>
+          <div class="history-tl-container">
+              <div><span>Day 1 </span>
+                  <ul class="tl">
+                      <li class="tl-item" *ngFor='let sch of schedule.schedule'>
+                          <div class="timestamp">
+                              {{sch.time}}
+                          </div>
+                          <div class="item-title">{{sch.activity}}</div>
+                          <!-- <div class="item-detail">Don't forget the ring</div> -->
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- End Timeline Area-->
