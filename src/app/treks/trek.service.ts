@@ -13,8 +13,8 @@ export class TrekService {
 
     constructor(private httpClient: HttpClient) { }
 
-    private url = 'api/data/events.json';
-    private schedulesUrl = 'api/data/schedules.json';
+    private url = 'src/assets/data/events.json';
+    private schedulesUrl = 'src/assets/data/schedules.json';
     // private url = 'http://localhost:4000/treks';
     // private schedulesUrl = 'http://localhost:4000/schedules';
 
