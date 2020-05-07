@@ -13,9 +13,10 @@ export class TrekService {
 
     constructor(private httpClient: HttpClient) { }
 
-    //private url = 'src/api/treks/treks.json';
-    private url = 'http://localhost:4000/treks';
-    private schedulesUrl = 'http://localhost:4000/schedules';
+    private url = 'api/data/events.json';
+    private schedulesUrl = 'api/data/schedules.json';
+    // private url = 'http://localhost:4000/treks';
+    // private schedulesUrl = 'http://localhost:4000/schedules';
 
     getTreks(): Observable<ITrek[]> {
         return this.httpClient.get<ITrek[]>(this.url).pipe(
@@ -40,9 +41,10 @@ export class TrekService {
         )
     }
 
-    getRelatedTreks(): Observable<ITrek[]> {
+    getRelatedTreks(activities : String[]): Observable<ITrek[]> {
         return this.httpClient.get<ITrek[]>(this.url).pipe(
-            tap(data => console.log('Upcoming Treks:' + JSON.stringify(data))),
+            map((treks: ITrek[]) => treks.filter(t=> t.activities.toString() == activities.toString())),
+            tap(data => console.log('Related Treks:' + JSON.stringify(data))),
             catchError(this.handleError)
         )
     }

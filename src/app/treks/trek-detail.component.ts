@@ -23,7 +23,7 @@ export class TrekDetailComponent implements OnInit {
     let id = +this.route.snapshot.paramMap.get('id');
     this.eventId = id;
     this.getTrek(id);
-    this.getRelatedEvents();
+    this.getRelatedEvents(["Trekking","Camping"]);
     window.scrollTo(0, 0);
   }
 
@@ -34,8 +34,8 @@ export class TrekDetailComponent implements OnInit {
     });
   }
 
-  getRelatedEvents() {
-    this.trekService.getRelatedTreks().subscribe({
+  getRelatedEvents(activities: String[]) {
+    this.trekService.getRelatedTreks(activities).subscribe({
       next: treks => this.treks = treks,
       error: err => this.errorMessage = err
     })
