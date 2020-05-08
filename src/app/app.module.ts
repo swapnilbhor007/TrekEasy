@@ -8,27 +8,25 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { TrekModule } from './treks/trek.module';
 import { HomeModule } from './home/home.module';
-import { HeaderComponent } from './layout/header.component';
-import { FooterComponent } from './layout/footer.component';
 import { ErrorComponent } from './home/error.component';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    HeaderComponent,
-    FooterComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    LayoutModule,
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', component: ErrorComponent }
     ]
-    //, {onSameUrlNavigation: 'reload'}
+      //, {onSameUrlNavigation: 'reload'}
     ),
     TrekModule,
     HomeModule

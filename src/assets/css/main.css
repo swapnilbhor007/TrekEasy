@@ -2737,6 +2737,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*-------- start other-issue Area ------------*/
 .single-other-issue .thumb {
   overflow: hidden;
+  height: 140px;
 }
 
 .single-other-issue .thumb img {

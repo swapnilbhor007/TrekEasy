@@ -4,6 +4,7 @@ import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/htt
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators'
 import { ISchedule } from './schedule';
+import { IActivity } from '../home/activities';
 
 @Injectable({
     providedIn: 'root'
@@ -13,13 +14,15 @@ export class TrekService {
 
     constructor(private httpClient: HttpClient) { }
 
-    private url = 'assets/data/events.json';
+    private eventsUrl = 'assets/data/events.json';
     private schedulesUrl = 'assets/data/schedules.json';
-    // private url = 'http://localhost:4000/treks';
+    private activitiesUrl = 'assets/data/activities.json';
+    // private eventsUrl = 'http://localhost:4000/treks';
     // private schedulesUrl = 'http://localhost:4000/schedules';
+     // private activitiesUrl = 'http://localhost:4000/activities';
 
     getTreks(): Observable<ITrek[]> {
-        return this.httpClient.get<ITrek[]>(this.url).pipe(
+        return this.httpClient.get<ITrek[]>(this.eventsUrl).pipe(
             tap(data => console.log('Treks:' + JSON.stringify(data))),
             catchError(this.handleError)
         )
@@ -34,16 +37,16 @@ export class TrekService {
     }
 
     getUpcomingTreks(): Observable<ITrek[]> {
-        return this.httpClient.get<ITrek[]>(this.url).pipe(
+        return this.httpClient.get<ITrek[]>(this.eventsUrl).pipe(
             map((treks: ITrek[]) => treks.filter(t => new Date(t.eventDate) > new Date())),
             tap(data => console.log('Upcoming Treks:' + JSON.stringify(data))),
             catchError(this.handleError)
         )
     }
 
-    getRelatedTreks(activities : String[]): Observable<ITrek[]> {
-        return this.httpClient.get<ITrek[]>(this.url).pipe(
-            map((treks: ITrek[]) => treks.filter(t=> t.activities.toString() == activities.toString())),
+    getFilteredTreks(activities? : String[]): Observable<ITrek[]> {
+        return this.httpClient.get<ITrek[]>(this.eventsUrl).pipe(
+            map((treks: ITrek[]) => treks.filter(t=> t.activities.toString().toLowerCase().includes(activities.toString().toLowerCase()))),
             tap(data => console.log('Related Treks:' + JSON.stringify(data))),
             catchError(this.handleError)
         )
@@ -55,6 +58,13 @@ export class TrekService {
             tap(data => console.log('Schedules:' + JSON.stringify(data))),
             catchError(this.handleError)
         )    
+    }
+
+    getActivities(): Observable<IActivity[]> {
+        return this.httpClient.get<IActivity[]>(this.activitiesUrl).pipe(
+            tap(data => console.log('Treks:' + JSON.stringify(data))),
+            catchError(this.handleError)
+        )
     }
 
     private handleError(err: HttpErrorResponse) {

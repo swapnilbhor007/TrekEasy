@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TrekService } from '../treks/trek.service'
+import { IActivity } from '../home/activities';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  activities: IActivity[];
+  errorMessage: string;
 
-  constructor() { }
+  constructor(private trekService: TrekService) { }
 
   ngOnInit() {
+    this.getActivities();
   }
+  
+  getActivities() {
+    this.trekService.getActivities().subscribe({
+      next: activities => { this.activities = activities },
+      error: err => { this.errorMessage = err }
+    });
+  }
+
 
 }

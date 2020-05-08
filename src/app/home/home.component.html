@@ -14,6 +14,34 @@
   </div>					
 </section>
 
+<!-- Start other-issue Area -->
+<section class="other-issue-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-40 col-lg-9">
+				<div class="title text-center">
+					<h1 class="mb-10">Activities of your interest</h1>
+					<p>We all live in an age that belongs to the young at heart. Life that is.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row" *ngIf='activities && activities.length'>
+			<div class="col-lg-3 col-md-6" *ngFor='let activity of activities'>
+				<div class="single-other-issue" [routerLink]="['/treks/', activity.name]">
+					<div class="thumb">
+						<img class="img-fluid" [src]='activity.imageURL' [title]='activity.name' alt="">
+					</div>
+						<h4>{{activity.name | titlecase}}</h4>
+					<p>
+						{{activity.description}}
+					</p>
+				</div>
+			</div>			
+		</div>
+	</div>
+</section>
+<!-- End other-issue Area -->
+
 <!-- Start popular-destination Area -->
 <section class="popular-destination-area section-gap">
   <div class="container">

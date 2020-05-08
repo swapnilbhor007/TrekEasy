@@ -28,14 +28,9 @@
           <ul class="nav-menu">
             <li><a [routerLink]="['/home']">Home</a></li>
             <li><a [routerLink]="['/treks']">Events</a></li>
-            <li class="menu-has-children"><a href="" class="sf-with-ul">Activities</a>
-              <ul style="display: none;">
-                <li><a [routerLink]="['/treks']">Trekking</a></li>
-                <li><a [routerLink]="['/treks']">Camping</a></li>
-                <li><a [routerLink]="['/treks']">Sightseeing</a></li>
-                <li><a [routerLink]="['/treks']">Rappeling</a></li>
-                <li><a [routerLink]="['/treks']">Paragliding</a></li>
-                <li><a [routerLink]="['/treks']">Scuba diving</a></li>
+            <li class="menu-has-children"><a [routerLink]="['/treks']" class="sf-with-ul">Activities</a>
+              <ul style="display: none;" *ngIf='activities && activities.length'>
+                <li *ngFor='let activity of activities'><a [routerLink]="['/treks/', activity.name]" >{{activity.name | titlecase | convertToSpaces:'-'}}</a></li>
               </ul>
             </li>
             <li><a [routerLink]="['/packages']">Packages</a></li>

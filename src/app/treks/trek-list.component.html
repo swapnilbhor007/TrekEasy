@@ -51,6 +51,36 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-4 sidebar-widgets" style="display: none;">
+            <div class="widget-wrap">
+                <div class="single-sidebar-widget tag-cloud-widget">
+                    <h4 class="tagcloud-title">Filters</h4>
+                    <h6>Activities</h6><br/>
+                    <ul>
+                        <li><a href="#">Trekking</a></li>
+                        <li><a href="#">Camping</a></li>
+                        <li><a href="#">Sightseing</a></li>
+                        <li><a href="#">Rappeling</a></li>
+                        <li><a href="#">Paragliding</a></li>
+                        <li><a href="#">Scuba Diving</a></li>
+                    </ul>
+                    <br/>
+                    <h6>Difficulty level</h6><br/>
+                    <ul>
+                        <li><a href="#">Easy</a></li>
+                        <li><a href="#">Moderate</a></li>
+                        <li><a href="#">Hard</a></li>
+                    </ul>
+                    <br/>
+                    <h6>Price</h6><br/>
+                    <div class="percentage">
+                        <div class="progress">
+                            <div class="progress-bar color-3" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>								
+            </div>
+        </div>
         <div class="row" *ngIf='treks && treks.length'>
             <div class="col-lg-4" *ngFor='let trek of filteredTreks'>
                 <div class="single-destinations" [routerLink]="['/trek', trek.id]">

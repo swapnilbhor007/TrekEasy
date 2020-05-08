@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ITrek } from './trek';
 import { TrekService } from './trek.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     templateUrl: './trek-list.component.html'
@@ -24,12 +25,20 @@ export class TrekListComponent implements OnInit {
     treks: ITrek[];
     errorMessage: string;
 
-    constructor(private trekService: TrekService) {
-
+    constructor(private route: ActivatedRoute, private router: Router, private trekService: TrekService) {
+        this.router.routeReuseStrategy.shouldReuseRoute = function () {
+            return false;
+          };
     }
-    
+
     ngOnInit(): void {
-        this.getTreks();
+        let activity = this.route.snapshot.paramMap.get('activity');
+        if (activity != null) {
+            this.getFilteredTreks([activity]);
+        }
+        else {
+            this.getTreks();
+        }
         window.scrollTo(0, 0);
     }
 
@@ -37,7 +46,7 @@ export class TrekListComponent implements OnInit {
         this.pageTitle = 'Event : ' + message;
     }
 
-    onBookNow(): void{
+    onBookNow(): void {
 
     }
 
@@ -52,6 +61,16 @@ export class TrekListComponent implements OnInit {
 
     getTreks() {
         this.trekService.getTreks().subscribe({
+            next: treks => {
+                this.treks = treks,
+                    this.filteredTreks = this.treks;
+            },
+            error: err => this.errorMessage = err
+        });
+    }
+
+    getFilteredTreks(activities: String[]) {
+        this.trekService.getFilteredTreks(activities).subscribe({
             next: treks => {
                 this.treks = treks,
                     this.filteredTreks = this.treks;

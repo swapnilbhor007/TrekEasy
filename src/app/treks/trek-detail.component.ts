@@ -35,7 +35,7 @@ export class TrekDetailComponent implements OnInit {
   }
 
   getRelatedEvents(activities: String[]) {
-    this.trekService.getRelatedTreks(activities).subscribe({
+    this.trekService.getFilteredTreks(activities).subscribe({
       next: treks => this.treks = treks,
       error: err => this.errorMessage = err
     })

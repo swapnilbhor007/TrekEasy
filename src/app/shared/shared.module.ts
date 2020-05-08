@@ -5,6 +5,7 @@ import { StarComponent } from './components/star.component';
 import { FormsModule } from '@angular/forms';
 import { TimelineComponent } from './components/timeline.component';
 import { BannerComponent } from '../layout/banner.component';
+import { ConvertToSpacesPipe } from './pipes/convert-to-spaces.pipe';
 
 @NgModule({
   imports: [
@@ -14,14 +15,16 @@ import { BannerComponent } from '../layout/banner.component';
   declarations: [
     StarComponent,
     TimelineComponent,
-    BannerComponent
+    BannerComponent,
+    ConvertToSpacesPipe
   ],
   exports:[
     CommonModule,
     FormsModule,
     StarComponent,
     TimelineComponent,
-    BannerComponent
+    BannerComponent,
+    ConvertToSpacesPipe
   ]
 })
 export class SharedModule { }
