@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ITrek } from './trek';
 import { TrekService } from './trek.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { Level } from '../shared/level';
     templateUrl: './trek-list.component.html'
 })
 
-export class TrekListComponent implements OnInit, AfterViewInit  {
+export class TrekListComponent implements OnInit  {
     pageTitle = 'Events';
     previewWidth: number = 255;
     previewMargin: number = 2;
@@ -48,10 +48,6 @@ export class TrekListComponent implements OnInit, AfterViewInit  {
         }
         this.getActivities();
         window.scrollTo(0, 0);
-    }
-
-    ngAfterViewInit():void{
-    
     }
 
     onRatingClicked(message: string): void {
@@ -94,7 +90,7 @@ export class TrekListComponent implements OnInit, AfterViewInit  {
             selectedLevels.push(element.textContent.toLowerCase());
         });
         
-        // Perform filter
+        // Perform filter by activity and level
         this.getFilteredTreks(selectedActivities, selectedLevels);
     }
 
