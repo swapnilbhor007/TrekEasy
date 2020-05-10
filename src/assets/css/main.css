@@ -3832,6 +3832,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #f8b600;
 }
 
+.widget-wrap .tag-cloud-widget ul li.selected {
+  background: #f8b600;
+}
+
+
+
 .widget-wrap .tag-cloud-widget ul li:hover a {
   color: #fff;
 }

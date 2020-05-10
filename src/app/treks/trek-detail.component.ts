@@ -29,7 +29,7 @@ export class TrekDetailComponent implements OnInit {
 
   getTrek(id: number) {
     this.trekService.getTrekDetails(id).subscribe({
-      next: trek => this.trek = trek,
+      next:  trek => this.trek = trek,
       error: err => this.errorMessage = err
     });
   }
