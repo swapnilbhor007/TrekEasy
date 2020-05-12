@@ -1,22 +1,28 @@
 <!-- Start Timeline Area -->
-<section class="insurence-one-area section-gap" *ngIf='schedule && schedule.schedule.length'>
-  <div class="container">
-      <div class="section-top-border">
-          <h3 class="mb-30">Schedule</h3>
-          <div class="history-tl-container">
-              <div><span>Day 1 </span>
-                  <ul class="tl">
-                      <li class="tl-item" *ngFor='let sch of schedule.schedule'>
-                          <div class="timestamp">
-                              {{sch.time}}
-                          </div>
-                          <div class="item-title">{{sch.activity}}</div>
-                          <!-- <div class="item-detail">Don't forget the ring</div> -->
-                      </li>
-                  </ul>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
+<div class="timeline-tl-container">
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default" *ngFor='let day of schedule.schedule'>
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="primary-btn text-uppercase" data-toggle="collapse" data-parent="#accordion" href="{{'#collapse' + day.id}}">
+                        {{ 'Day ' + day.id}}
+                    </a>
+                </h4>
+            </div>
+            <div id="{{'collapse'+ day.id}}" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <ul class="tl">
+                        <li class="tl-item" *ngFor='let todo of day.todo'>
+                            <div class="timestamp">
+                                {{todo.time}}
+                            </div>
+                            <div class="item-title">{{todo.activity}}</div>
+                            <!-- <div class="item-detail">Don't forget the ring</div>  -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- End Timeline Area-->

@@ -4,9 +4,11 @@ import { TrekService } from './trek.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IActivity } from '../home/activities';
 import { Level } from '../shared/level';
+import { CssSelector } from '@angular/compiler';
 
 @Component({
-    templateUrl: './trek-list.component.html'
+    templateUrl: './trek-list.component.html',
+    styleUrls: ['./trek-list.component.css']
 })
 
 export class TrekListComponent implements OnInit  {
@@ -29,12 +31,17 @@ export class TrekListComponent implements OnInit  {
     errorMessage: string;
     activities: IActivity[];
     selectedActivity: string;
-    levels = Level;
+    levels : string[] = this.buildLevelsArray() ;
+    maxPrice: number = 0;
 
     constructor(private route: ActivatedRoute, private router: Router, private trekService: TrekService) {
         this.router.routeReuseStrategy.shouldReuseRoute = function () {
             return false;
         };
+    }
+
+    buildLevelsArray(): string[] {
+        return Object.keys(Level).filter(k => typeof Level[k as any] === "number")
     }
 
     ngOnInit(): void {
@@ -71,27 +78,36 @@ export class TrekListComponent implements OnInit  {
         // apply filter class to activity li
         var element = document.getElementsByClassName('filter-' + criteria)[i];
         this.toggleSelectedClass(element);
+       this.performFilter();
+    }
 
-        // get all selected activities li
-        var activityOptions = document.getElementsByClassName('filter-activities selected');
-        var selectedActivities: string[] = [];
+    performFilter(event?){
+         // get all selected activities li
+         var activityOptions = document.getElementsByClassName('filter-activities selected');
+         var selectedActivities: string[] = [];
+ 
+         // Create array of selected activities
+         Array.from(activityOptions).forEach(function (element) {
+             selectedActivities.push(element.textContent.toLowerCase());
+         });
+ 
+         // get all selected levels li
+         var levelOptions = document.getElementsByClassName('filter-levels selected');
+         var selectedLevels: string[] = [];
+ 
+         // Create array of selected levels
+         Array.from(levelOptions).forEach(function (element) {
+             selectedLevels.push(element.textContent.toLowerCase());
+         });
 
-        // Create array of selected activities
-        Array.from(activityOptions).forEach(function (element) {
-            selectedActivities.push(element.textContent.toLowerCase());
-        });
-
-        // get all selected levels li
-        var levelOptions = document.getElementsByClassName('filter-levels selected');
-        var selectedLevels: string[] = [];
-
-        // Create array of selected levels
-        Array.from(levelOptions).forEach(function (element) {
-            selectedLevels.push(element.textContent.toLowerCase());
-        });
-        
-        // Perform filter by activity and level
-        this.getFilteredTreks(selectedActivities, selectedLevels);
+         // Price
+        //  //var slider = document.getElementById("priceRange");
+         if(event != null){
+            this.maxPrice = event.target.value;
+         }
+             
+         // Perform filter by activity and level
+         this.getFilteredTreks(selectedActivities, selectedLevels, this.maxPrice);
     }
 
     // performFilter(filterBy: string): ITrek[] {
@@ -109,8 +125,8 @@ export class TrekListComponent implements OnInit  {
         });
     }
 
-    getFilteredTreks(activities?: String[], levels?: String[]) {
-        this.trekService.getFilteredTreks(activities, levels).subscribe({
+    getFilteredTreks(activities?: String[], levels?: String[], maxPrice?: number) {
+        this.trekService.getFilteredTreks(activities, levels, maxPrice).subscribe({
             next: treks => {
                 this.treks = treks,
                     this.filteredTreks = this.treks;

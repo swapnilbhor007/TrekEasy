@@ -19,7 +19,7 @@ export class TrekService {
     private activitiesUrl = 'assets/data/activities.json';
     // private eventsUrl = 'http://localhost:4000/treks';
     // private schedulesUrl = 'http://localhost:4000/schedules';
-     // private activitiesUrl = 'http://localhost:4000/activities';
+    // private activitiesUrl = 'http://localhost:4000/activities';
 
     getTreks(): Observable<ITrek[]> {
         return this.httpClient.get<ITrek[]>(this.eventsUrl).pipe(
@@ -31,7 +31,7 @@ export class TrekService {
     getTrekDetails(id: number): Observable<ITrek> {
         return this.getTreks().pipe(
             map((treks: ITrek[]) => treks.find(t => t.id === id)),
-           // tap(data => console.log('Trek:' + JSON.stringify(data))),
+            // tap(data => console.log('Trek:' + JSON.stringify(data))),
             catchError(this.handleError)
         )
     }
@@ -39,23 +39,31 @@ export class TrekService {
     getUpcomingTreks(): Observable<ITrek[]> {
         return this.httpClient.get<ITrek[]>(this.eventsUrl).pipe(
             map((treks: ITrek[]) => treks.filter(t => new Date(t.eventDate) > new Date())),
-           // tap(data => console.log('Upcoming Treks:' + JSON.stringify(data))),
+            // tap(data => console.log('Upcoming Treks:' + JSON.stringify(data))),
             catchError(this.handleError)
         )
     }
 
-    getFilteredTreks(activities? : String[], levels? : String[]): Observable<ITrek[]> {
-        // var lowerCaseActivities = activities.map(function(value) {
-        //     return value.toLowerCase();
-        //   });
-        // console.log('act :' + activities.toString());
-
+    getFilteredTreks(activities?: String[], levels?: String[], maxPrice?: number): Observable<ITrek[]> {
+        //   console.log('level : ' + levels.toString());
+        //   console.log('activities : ' + activities.toString());
+        //console.log('price :' + maxPrice);
+        
         return this.httpClient.get<ITrek[]>(this.eventsUrl).pipe(
-            map((treks: ITrek[]) => treks.filter(t=> t.activities.some(o => activities.includes(o.toLowerCase())
-                 &&(levels && levels.length > 0 ? levels.toString().includes(t.level.toLowerCase()) : true)))),
-            // map((treks: ITrek[]) => treks.filter(t=> t.activities.some(o => activities.includes(o.toLowerCase())))),
-            // map((treks: ITrek[]) => treks.filter(t=> t.activities.toString().toLowerCase().includes(activities.toString().toLowerCase()))),
-           // tap(data => console.log('Related Treks:' + JSON.stringify(data))),
+            map((treks: ITrek[]) => treks.filter(t => ((activities && activities.length > 0 
+                ? t.activities && t.activities.some(o => activities && activities.includes(o)) : true)
+                && (levels && levels.length > 0 ? levels.toString().includes(t.level) : true)
+                && (maxPrice && maxPrice > 0 ? t.price <= maxPrice : true)))),
+            // tap(data => console.log('Filtered Treks:' + JSON.stringify(data))),
+            catchError(this.handleError)
+        )
+    }
+
+    getRelatedTreks(id: number, activities?: String[]): Observable<ITrek[]> {
+        return this.httpClient.get<ITrek[]>(this.eventsUrl).pipe(
+            map((treks: ITrek[]) => treks.filter(t => (t.id != id)
+                && t.activities && t.activities.some(o => activities && activities.includes(o)))),
+            // tap(data => console.log('Related Treks:' + JSON.stringify(data))),
             catchError(this.handleError)
         )
     }
@@ -63,14 +71,14 @@ export class TrekService {
     getScheduleDetails(id: number): Observable<ISchedule> {
         return this.httpClient.get<ISchedule[]>(this.schedulesUrl).pipe(
             map((schedules: ISchedule[]) => schedules.find(t => t.id === id)),
-           // tap(data => console.log('Schedules:' + JSON.stringify(data))),
+            // tap(data => console.log('Schedules:' + JSON.stringify(data))),
             catchError(this.handleError)
-        )    
+        )
     }
 
     getActivities(): Observable<IActivity[]> {
         return this.httpClient.get<IActivity[]>(this.activitiesUrl).pipe(
-           // tap(data => console.log('Treks:' + JSON.stringify(data))),
+            // tap(data => console.log('Treks:' + JSON.stringify(data))),
             catchError(this.handleError)
         )
     }

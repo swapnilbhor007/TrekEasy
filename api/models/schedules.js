@@ -3,18 +3,19 @@ const Schema = mongoose.Schema;
 
 // Define collection and schema for Schedules
 
-let Schedule = new Schema({
+let Todo = new Schema({
     time: { type: String },
     activity: { type: String }
 })
 
+let Day = new Schema({
+    id: { type: Number },
+    todo: { type: [Todo] }
+})
+
 let Schedules = new Schema({
-    id: {
-        type: Number
-    },
-    schedule: {
-        type: [Schedule]
-    }
+    id: { type: Number },
+    schedule: { type: [Day]  }
 }, {
     collection: 'Schedules'
 });

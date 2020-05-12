@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { ISchedule } from 'src/app/treks/schedule';
 import { TrekService } from '../../treks/trek.service';
 
@@ -9,20 +9,12 @@ import { TrekService } from '../../treks/trek.service';
 })
 export class TimelineComponent implements OnInit {
 
-  @Input() id: number;
-  schedule: ISchedule;
-  errorMessage: string;
-
+  @Input() schedule: ISchedule;
+  
   constructor(private trekService: TrekService) { }
 
   ngOnInit() {
-    this.getSchedule(this.id);
   }
 
-  getSchedule(id: number) {
-    this.trekService.getScheduleDetails(id).subscribe({
-      next: schedule => this.schedule = schedule,
-      error: err => this.errorMessage = err
-    });
-  }
+ 
 }

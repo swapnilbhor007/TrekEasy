@@ -1345,8 +1345,8 @@ h1, h2, h3, h4, h5, h6 {
 .unordered-list li:before {
   content: "";
   position: absolute;
-  width: 14px;
-  height: 14px;
+  width: 11px;
+  height: 11px;
   border: 3px solid #f8b600;
   background: #fff;
   top: 4px;
@@ -2383,7 +2383,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding-left: 30px;
   padding-right: 30px;
   border: none;
-  color: #fff;
+  color: #fff!important;
   display: inline-block;
   font-size: 14px;
   font-weight: 500;
@@ -2617,6 +2617,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  cursor: pointer;
 }
 
 .single-destination .overlay-bg {
@@ -2735,6 +2736,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /*-------- end price Area ------------*/
 /*-------- start other-issue Area ------------*/
+
+.single-other-issue {
+cursor: pointer;
+}
+
 .single-other-issue .thumb {
   overflow: hidden;
   height: 140px;
@@ -3167,6 +3173,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  cursor: pointer;
 }
 
 .destinations-area .single-destinations .thumb {
@@ -3553,7 +3560,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .widget-wrap .single-sidebar-widget {
-  margin: 30px 30px;
+  margin: 15px 15px;
   padding-bottom: 30px;
   border-bottom: 1px solid #eee;
 }
@@ -3826,14 +3833,16 @@ body.mobile-nav-active #mobile-nav-toggle {
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  cursor: pointer;
 }
 
 .widget-wrap .tag-cloud-widget ul li:hover {
-  background: #f8b600;
+  background: #eccb6f;
 }
 
 .widget-wrap .tag-cloud-widget ul li.selected {
   background: #f8b600;
+  color: #fff!important;
 }
 
 

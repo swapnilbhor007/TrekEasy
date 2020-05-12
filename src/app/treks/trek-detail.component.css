@@ -1,0 +1,16 @@
+.inclusions {
+margin-bottom: 20px;
+}
+
+.inclusions li::before{
+ border-color:  #27c25a!important;
+}
+
+.exclusions li::before{
+  border-color:  #e63232!important;
+   }
+
+.inclusions-background{
+    box-shadow: 0px 10px 30px 0px rgba(60, 64, 143, 0.2);
+    padding: 20px 20px;
+}

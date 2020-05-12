@@ -43,43 +43,55 @@
 <section class="destinations-area section-gap">
     <div class="container">
         <div class="row">
-            <div class="col-lg-2 sidebar-widgets"> 
-                    <div class="widget-wrap">
-                        <div class="single-sidebar-widget tag-cloud-widget">
-                            <h4 class="tagcloud-title">Filters</h4>
-                            <h6 id='ulActivity'>Activities</h6><br/>
-                            <ul *ngIf='activities && activities.length'>
-                                <li [ngClass]='activity.name === selectedActivity ? "filter-activities selected" : "filter-activities"' *ngFor='let activity of activities; let i = index'><a (click)='applyFilter(i, "activities")'>{{activity.name | titlecase | convertToSpaces:'-'}}</a></li>
-                            </ul>
-                            <br/>
-                            <h6>Difficulty</h6><br/>
-                            <ul>
-                                <li class='filter-levels'><a (click)='applyFilter(0,"levels")'>{{levels[0]}}</a></li>
-                                <li class='filter-levels'><a (click)='applyFilter(1,"levels")'>{{levels[1]}}</a></li>
-                                <li class='filter-levels'><a (click)='applyFilter(2,"levels")'>{{levels[2]}}</a></li>
-                            </ul>
-                            <br/>
-                            <h6>Price</h6><br/>
-                            <div class="percentage">
-                                <div class="progress">
-                                    <div class="progress-bar color-3" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+            <div class="col-lg-2 sidebar-widgets">
+                <div class="widget-wrap">
+                    <div class="single-sidebar-widget tag-cloud-widget">
+                        <h4 class="tagcloud-title">Filters</h4>
+                        <h6 id='ulActivity'>Activities</h6><br />
+                        <ul *ngIf='activities && activities.length'>
+                            <li (click)='applyFilter(i, "activities")' 
+                                [ngClass]='activity.name === selectedActivity ? "filter-activities selected" : "filter-activities"'
+                                *ngFor='let activity of activities; let i = index'>
+                                <a>{{activity.name | titlecase | convertToSpaces:'-'}}</a>
+                            </li>
+                        </ul>
+                        <br />
+                        <h6>Difficulty</h6><br />
+                        <ul>
+                            <li (click)='applyFilter(i,"levels")' class='filter-levels' *ngFor='let level of levels; let i = index'>
+                                <a>{{level.toString()}}</a>
+                            </li>
+                        </ul>
+                        <br />
+                        <h6>Price</h6><br />
+                        <!-- <div class="percentage">
+                            <div class="progress">
+                                <div class="progress-bar color-3" role="progressbar" style="width: 55%"
+                                    aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                        </div>								
+                        </div> -->
+                        <div class="slidecontainer">
+                            <span>0</span> 
+                            <input type="range" (change)='performFilter($event)' min="0" max="10000" value="0" class="slider" id="priceRange"> 
+                            <span>10k</span>
+                            <div style="text-align:center;">Max : <strong> {{ maxPrice | currency:'INR'}} </strong></div>
+                          </div>                       
                     </div>
+                </div>
             </div>
             <div class="col-lg-10">
                 <div class="row d-flex justify-content-center">
                     <div class="menu-content col-lg-8">
                         <div class="title text-center" *ngIf='filteredTreks && filteredTreks.length'>
                             <h1 class="mb-10">Popular Destinations</h1>
-                            <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast.</p>
+                            <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely
+                                fast.</p>
                         </div>
                         <div class="title text-center" *ngIf='filteredTreks && filteredTreks.length == 0'>
                             <h1 class="mb-10">No Events</h1>
                             <p>There are no matching events, please try some different options.</p>
                         </div>
-        
+
                     </div>
                 </div>
                 <div class="row" *ngIf='filteredTreks && filteredTreks.length'>
@@ -91,7 +103,8 @@
                             <div class="details">
                                 <h4 class="d-flex justify-content-between">
                                     <span>{{trek.name | convertToSpaces:'-'}}</span>
-                                    <app-star [rating]='trek.rating' (ratingClicked)='onRatingClicked($event)'></app-star>
+                                    <app-star [rating]='trek.rating' (ratingClicked)='onRatingClicked($event)'>
+                                    </app-star>
                                 </h4>
                                 <p>
                                     {{trek.location}} | View on map | 49 Reviews
@@ -99,15 +112,20 @@
                                 <ul class="package-list">
                                     <li class="d-flex justify-content-between align-items-center">
                                         <span>Activities</span>
-                                        <span>{{trek.activities.toString()}}</span>
+                                        <!-- <span>{{trek.activities.toString()}}</span> -->
+                                        <span>
+                                            <strong
+                                                *ngFor='let activity of trek.activities'>{{activity + ' ' | titlecase}}</strong>
+                                        </span>
                                     </li>
                                     <li class="d-flex justify-content-between align-items-center">
                                         <span>Difficulty Level</span>
-                                        <span>{{trek.level}}</span>
+                                        <span><strong>{{trek.level | titlecase}}</strong></span>
                                     </li>
                                     <li class="d-flex justify-content-between align-items-center">
                                         <span>Price per person</span>
-                                        <a href="#" class="price-btn">{{trek.price | currency:'INR':'symbol':'1.2-2'}}</a>
+                                        <a href="#"
+                                            class="price-btn">{{trek.price | currency:'INR':'symbol':'1.2-2'}}</a>
                                     </li>
                                 </ul>
                                 <!-- <a class="price-btn text-uppercase" (click)='onBookNow()'>Book Now</a> -->

@@ -8,10 +8,11 @@
         <div class="row align-items-center" *ngIf='trek'>
             <div class="col-lg-6 insurence-left">
                 <img class="img-fluid img-one" [src]='trek.imageURL' [title]='trek.name'>
+                <a class="primary-btn text-uppercase">View Gallery</a>
             </div>
             <div class="col-lg-6 insurence-right">
                 <!-- <a class="primary-btn text-uppercase" (click)='onBack()' style="float: right;">Back</a> -->
-                <a class="primary-btn text-uppercase" style="float: right;" *ngIf='trek.eventDate'>Book Now</a>
+                <a class="primary-btn text-uppercase" style="float: right;" *ngIf='trek.eventDate'> {{ trek.price | currency:'INR' }} Book Now </a>
                 <h6 class="text-uppercase">Need to know</h6>
                 <h1>{{trek.name}}</h1>
                 <app-star [rating]='trek.rating'>
@@ -32,7 +33,40 @@
 <!-- End Content Area -->
 
 <!--Start Timeline Area-->
-<app-timeline [id]='eventId'></app-timeline>
+<section class="insurence-one-area section-gap" *ngIf='tripSchedule && tripSchedule.schedule'>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 insurence-left">
+                    <h3 class="mb-30">Schedule</h3>
+                    <app-timeline [schedule]='tripSchedule'></app-timeline>
+            </div>
+            <div class="col-lg-4 insurence-right inclusions-background">
+                        <div class="inclusions">
+                            <h3 class="mb-20">Inclusions</h3>
+                            <ul class="unordered-list">
+                                <li>Travel from kalyan to khubi</li>
+                                <li>Entry fees</li>
+                                <li>Veg Food
+                                    <ul>
+                                        <li>2 Breakfast</li>
+                                        <li>1 Lunch</li>
+                                        <li>1 Dinner</li>
+                                    </ul>
+                                </li>
+                                <li>Camping tents</li>
+                            </ul>
+                        </div>
+                        <div class="exclusions">
+                            <h3 class="mb-20">Exclusions</h3>
+                            <ul class="unordered-list">
+                                <li>Personal expenses</li>
+                                <li>Repeat Entry fees</li>                          
+                            </ul>
+                        </div>
+            </div>
+        </div>
+    </div>
+</section>
 <!--End Timeline Area-->
 
 <!-- Start popular-destination Area -->

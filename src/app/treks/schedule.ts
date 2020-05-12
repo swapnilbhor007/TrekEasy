@@ -1,9 +1,14 @@
 export interface ISchedule {
     id: number,
-    schedule: Schedule[]
+    schedule: Day[]
 }
 
-class Schedule {
+class Day {
+    id: number;
+    todo: ToDo[];
+}
+
+class ToDo {
     time: String;
     activity: String;
 }
