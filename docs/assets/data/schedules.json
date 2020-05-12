@@ -1,0 +1,162 @@
+[
+    {
+        "id": 1,
+        "schedule": [
+            {
+                "id": 1,
+                "todo": [
+                    {
+                        "time": "6.30 am",
+                        "activity": "Gather at kalyan and depart for Khubi fata"
+                    },
+                    {
+                        "time": "10 am",
+                        "activity": "Walk from khubi fata to khireshwar village"
+                    },
+                    {
+                        "time": "11.30 am",
+                        "activity": "Snacks at Khireshwar village"
+                    },
+                    {
+                        "time": "4 pm",
+                        "activity": "Reach to top and lunch break"
+                    },
+                    {
+                        "time": "5 pm",
+                        "activity": "Explore caves, fort and temple"
+                    },
+                    {
+                        "time": "10 pm",
+                        "activity": "Dinner, campfire and night stay in cave"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "todo": [
+                    {
+                        "time": "5 am",
+                        "activity": "Morning view of kokankada"
+                    },
+                    {
+                        "time": "8 am",
+                        "activity": "Breakfast and local sight seeing"
+                    },
+                    {
+                        "time": "10 am",
+                        "activity": "Start descending the fort"
+                    },
+                    {
+                        "time": "2 pm",
+                        "activity": "Lunch at khireshwar village"
+                    },
+                    {
+                        "time": "4 pm",
+                        "activity": "Way back to kalyan"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "schedule": [
+            {
+                "id": 1,
+                "todo": [
+                    {
+                        "time": "7.30 am",
+                        "activity": "Gather at karjat and depart for kondane village"
+                    },
+                    {
+                        "time": "10 am",
+                        "activity": "Breakfast at kondane and start climbing"
+                    },
+                    {
+                        "time": "12.30 pm",
+                        "activity": "Stop at kondane caves and waterfall"
+                    },
+                    {
+                        "time": "3 pm",
+                        "activity": "Reach to top and lunch break"
+                    },
+                    {
+                        "time": "4 pm",
+                        "activity": "Explore forts and sanctuary"
+                    },
+                    {
+                        "time": "9 pm",
+                        "activity": "Dinner, campfire and night stay in tent"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "todo": [
+                    {
+                        "time": "6 am",
+                        "activity": "Morning sunrise sight seeing"
+                    },
+                    {
+                        "time": "8 am",
+                        "activity": "Breakfast and local sight seeing"
+                    },
+                    {
+                        "time": "10 am",
+                        "activity": "Walk towards Della adventures"
+                    },
+                    {
+                        "time": "2 pm",
+                        "activity": "Lunch at Della adventures"
+                    },
+                    {
+                        "time": "3 pm",
+                        "activity": "Way back to Karjat"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "schedule": [
+            {
+                "id": 1,
+                "todo": [
+                    {
+                        "time": "7.30 am",
+                        "activity": "Gather at Neral and morning breakfast"
+                    },
+                    {
+                        "time": "8 am",
+                        "activity": "Depart for Matheran Hill point"
+                    },
+                    {
+                        "time": "8.30 am",
+                        "activity": "Reach train track and depart for Kadyavarcha Ganpati"
+                    },
+                    {
+                        "time": "9.30 am",
+                        "activity": "Start trek to peb fort"
+                    },
+                    {
+                        "time": "11.30 am",
+                        "activity": "Reach top and explore the fort"
+                    },
+                    {
+                        "time": "1 pm",
+                        "activity": "Lunch and rest"
+                    },
+                    {
+                        "time": "2 pm",
+                        "activity": "Start return trek"
+                    },
+                    {
+                        "time": "5 pm",
+                        "activity": "Reach Neral and disperse"
+                    }
+                ]
+            }
+        ]
+    }
+]
