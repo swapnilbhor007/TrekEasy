@@ -1,5 +1,7 @@
 export interface ISchedule {
     id: number,
+    inclusions: [string],
+    exclusions: [string],
     schedule: Day[]
 }
 

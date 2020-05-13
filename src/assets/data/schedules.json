@@ -1,6 +1,8 @@
 [
     {
         "id": 1,
+        "inclusions": ["Travel expenses", "Entry fees", "Veg Food ( 2 Breakfast, 1 Lunch, 1 Dinner)", "Camping tents", "Local Guide"],
+        "exclusions": ["Personal expenses", "Repeat Entry fees"],
         "schedule": [
             {
                 "id": 1,
@@ -60,6 +62,8 @@
     },
     {
         "id": 2,
+        "inclusions": ["Travel expenses", "Home-stay Accommodation", "Veg Food ( 2 Breakfast, 1 Lunch, 1 Dinner)", "Camping tents", "Local Guide"],
+        "exclusions": ["Personal expenses", "Repeat Entry fees"],
         "schedule": [
             {
                 "id": 1,
@@ -119,6 +123,8 @@
     },
     {
         "id": 3,
+        "inclusions": ["Travel expenses", "Entry fees", "Local Guide", "First Aid Kit"],
+        "exclusions": ["Food", "Personal expenses"],
         "schedule": [
             {
                 "id": 1,

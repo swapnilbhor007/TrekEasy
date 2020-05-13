@@ -3239,9 +3239,9 @@ cursor: pointer;
   margin: 20px 0px;
 }
 
-.insurence-right p, .insurence-left p {
+/* .insurence-right p, .insurence-left p {
   max-width: 445px;
-}
+} */
 
 .insurence-right img, .insurence-left img {
   width: 100%;

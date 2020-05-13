@@ -2,17 +2,24 @@
 <app-banner [title]='pageTitle'></app-banner>
 <!-- End banner Area -->
 
+<div class="sticky">
+    <div class="book-now" *ngIf='trek.eventDate'>
+        <span class='old-price'>{{ trek.price | currency:'INR' }}</span>
+        <span class='new-price'>{{ trek.price - 200 | currency:'INR' }}</span>
+        <a class="primary-btn text-uppercase"> Book Now </a>
+    </div> 
+</div>   
+
 <!-- Start Content Area -->
 <section class="insurence-one-area section-gap">
-    <div class="container">
+    <div class="container">  
         <div class="row align-items-center" *ngIf='trek'>
             <div class="col-lg-6 insurence-left">
                 <img class="img-fluid img-one" [src]='trek.imageURL' [title]='trek.name'>
-                <a class="primary-btn text-uppercase">View Gallery</a>
+                <a class="primary-btn text-uppercase mt-10 mb-10">View Gallery</a>
             </div>
             <div class="col-lg-6 insurence-right">
                 <!-- <a class="primary-btn text-uppercase" (click)='onBack()' style="float: right;">Back</a> -->
-                <a class="primary-btn text-uppercase" style="float: right;" *ngIf='trek.eventDate'> {{ trek.price | currency:'INR' }} Book Now </a>
                 <h6 class="text-uppercase">Need to know</h6>
                 <h1>{{trek.name}}</h1>
                 <app-star [rating]='trek.rating'>
@@ -40,27 +47,17 @@
                     <h3 class="mb-30">Schedule</h3>
                     <app-timeline [schedule]='tripSchedule'></app-timeline>
             </div>
-            <div class="col-lg-4 insurence-right inclusions-background">
-                        <div class="inclusions">
+            <div class="col-lg-4 insurence-right inclusions-background" *ngIf='tripSchedule.inclusions || tripSchedule.exclusions'>
+                        <div class="inclusions" *ngIf='tripSchedule.inclusions'>
                             <h3 class="mb-20">Inclusions</h3>
                             <ul class="unordered-list">
-                                <li>Travel from kalyan to khubi</li>
-                                <li>Entry fees</li>
-                                <li>Veg Food
-                                    <ul>
-                                        <li>2 Breakfast</li>
-                                        <li>1 Lunch</li>
-                                        <li>1 Dinner</li>
-                                    </ul>
-                                </li>
-                                <li>Camping tents</li>
+                                <li *ngFor='let inclusion of tripSchedule.inclusions'>{{inclusion}}</li>
                             </ul>
                         </div>
-                        <div class="exclusions">
+                        <div class="exclusions" *ngIf='tripSchedule.exclusions'>
                             <h3 class="mb-20">Exclusions</h3>
                             <ul class="unordered-list">
-                                <li>Personal expenses</li>
-                                <li>Repeat Entry fees</li>                          
+                                <li *ngFor='let exclusion of tripSchedule.exclusions'>{{exclusion}}</li>                         
                             </ul>
                         </div>
             </div>

@@ -14,3 +14,31 @@ margin-bottom: 20px;
     box-shadow: 0px 10px 30px 0px rgba(60, 64, 143, 0.2);
     padding: 20px 20px;
 }
+
+.sticky{
+  position: sticky;
+  top: 100px;
+  z-index: 10000;
+}
+
+.book-now {
+  width: 200px;
+  float: right;
+  box-shadow: 0px 10px 30px 0px rgba(60, 64, 143, 0.2);
+  padding: 20px 20px;
+  margin-top: 20px;
+  margin-right: 30px;
+  margin-bottom: -500px;
+  text-align: center;
+  background-color: #FFF;
+}
+
+.book-now .old-price{
+  text-decoration: line-through;
+  padding: 2px;
+}
+
+.book-now .new-price{
+  font-weight: bold;
+  padding: 2px;
+}
