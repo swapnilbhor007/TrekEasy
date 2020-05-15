@@ -16,7 +16,7 @@
         <div class="row align-items-center" *ngIf='trek'>
             <div class="col-lg-6 insurence-left">
                 <img class="img-fluid img-one" [src]='trek.imageURL' [title]='trek.name'>
-                <a class="primary-btn text-uppercase mt-10 mb-10">View Gallery</a>
+                <a id='viewGallery' class="primary-btn text-uppercase mt-10 mb-10">View Gallery</a>
             </div>
             <div class="col-lg-6 insurence-right">
                 <!-- <a class="primary-btn text-uppercase" (click)='onBack()' style="float: right;">Back</a> -->
@@ -39,8 +39,37 @@
 </section>
 <!-- End Content Area -->
 
+<div id="imageGallery" class="section-top-border" *ngIf='trek && trek.gallery.length'>
+    <h3>Image Gallery</h3>
+    <div class="row gallery-item">
+        <div [ngClass]="i % 2 == 0 ? 'col-md-2' : 'col-md-3'" *ngFor='let img of trek.gallery; let i = index;'>
+            <a [href]='imagePath + trek.id + "/" + img' class="img-gal"><div class="single-gallery-image" 
+               [ngStyle]="{'background': 'url(' + imagePath + trek.id + '/' + img + ')'}"></div></a>
+        </div>
+    </div>
+
+    <!-- <div class="row gallery-item">
+        <div class="col-md-4">
+            <a href="assets/img/treks/1/harishchandreshwartemple.jpg" class="img-gal">
+                <div class="single-gallery-image" style="background: url(assets/img/treks/1/harishchandreshwartemple.jpg);"></div></a>
+        </div>
+        <div class="col-md-4">
+            <a href="assets/img/treks/1/panoroma.jpg" class="img-gal">
+                <div class="single-gallery-image" style="background: url(assets/img/treks/1/panoroma.jpg);"></div></a>
+        </div>
+        <div class="col-md-4">
+            <a href="assets/img/treks/1/kedareshwarcave.jpg" class="img-gal">
+                <div class="single-gallery-image" style="background: url(assets/img/treks/1/kedareshwarcave.jpg);"></div></a>
+        </div>
+        <div class="col-md-6">
+            <a href="assets/img/treks/1/kokankada.jpg" class="img-gal">
+                <div class="single-gallery-image" style="background: url(assets/img/treks/1/kokankada.jpg);"></div></a>
+        </div>
+    </div> -->
+</div>
+
 <!--Start Timeline Area-->
-<section class="insurence-one-area section-gap" *ngIf='tripSchedule && tripSchedule.schedule'>
+<section class="insurence-one-area section-gap section-top-border" *ngIf='tripSchedule && tripSchedule.schedule'>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 insurence-left">
@@ -86,7 +115,7 @@
                         <img class="img-fluid" [src]='trek.imageURL' [title]='trek.name' style="height:250px!important">
                     </div>
                     <div class="desc">
-                        <a href="#" class="price-btn" *ngIf='trek.eventDate'>{{trek.eventDate | date:'mediumDate'}}</a>
+                        <a class="price-btn" *ngIf='trek && trek.eventDate'>{{trek.eventDate | date:'mediumDate'}}</a>
                         <h4>{{trek.name}}</h4>
                         <p>{{trek.location}}</p>
                     </div>
@@ -104,7 +133,7 @@
 <!-- End popular-destination Area -->
 
 <!-- Start testimonial Area -->
-<section class="testimonial-area section-gap">
+<section class="testimonial-area section-gap" *ngIf='reviews && reviews.length'>
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="menu-content pb-70 col-lg-8">
@@ -117,42 +146,16 @@
         </div>
         <div class="row">
             <div class="active-testimonial">
-                <div class="single-testimonial item d-flex flex-row">
+                <div class="single-testimonial item d-flex flex-row" *ngFor='let review of reviews'>
                     <div class="thumb">
-                        <img class="img-fluid" src="assets/img/elements/user1.png" alt="">
+                        <img class="img-fluid" [src]='"assets/img/users/" + review.userId + ".jpg"' alt="">
                     </div>
                     <div class="desc">
                         <p>
-                            Do you want to be even more successful? Learn to love learning and growth. The more effort
-                            you put into improving your skills, the bigger the payoff you.
+                           {{review.comment}}
                         </p>
-                        <h4>Harriet Maxwell</h4>
-                        <div class="star">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-testimonial item d-flex flex-row">
-                    <div class="thumb">
-                        <img class="img-fluid" src="assets/img/elements/user2.png" alt="">
-                    </div>
-                    <div class="desc">
-                        <p>
-                            A purpose is the eternal condition for success. Every former smoker can tell you just how
-                            hard it is to stop smoking cigarettes. However.
-                        </p>
-                        <h4>Carolyn Craig</h4>
-                        <div class="star">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </div>
+                        <h4>{{review.name}}</h4>
+                        <app-star [rating]='review.rating'></app-star>
                     </div>
                 </div>
             </div>

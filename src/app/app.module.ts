@@ -26,6 +26,7 @@ import { LayoutModule } from './layout/layout.module';
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', component: ErrorComponent }
     ]
+    //, {useHash: false, anchorScrolling: 'enabled'}
       //, {onSameUrlNavigation: 'reload'}
     ),
     TrekModule,
@@ -34,4 +35,5 @@ import { LayoutModule } from './layout/layout.module';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}

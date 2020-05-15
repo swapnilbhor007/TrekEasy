@@ -2808,6 +2808,10 @@ cursor: pointer;
   background: #f8b600;
 }
 
+.active-testimonial{
+  width:100%;
+}
+
 .single-testimonial {
   background-color: #fff;
   padding: 25px 30px 12px 30px;
@@ -2815,6 +2819,7 @@ cursor: pointer;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  margin-bottom: 10px;
 }
 
 .single-testimonial:hover {

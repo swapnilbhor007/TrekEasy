@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators'
 import { ISchedule } from './schedule';
 import { IActivity } from '../home/activities';
+import { IReview } from './reviews';
 
 @Injectable({
     providedIn: 'root'
@@ -17,6 +18,7 @@ export class TrekService {
     private eventsUrl = 'assets/data/events.json';
     private schedulesUrl = 'assets/data/schedules.json';
     private activitiesUrl = 'assets/data/activities.json';
+    private reviewsUrl = 'assets/data/reviews.json';
     // private eventsUrl = 'http://localhost:4000/treks';
     // private schedulesUrl = 'http://localhost:4000/schedules';
     // private activitiesUrl = 'http://localhost:4000/activities';
@@ -79,6 +81,14 @@ export class TrekService {
     getActivities(): Observable<IActivity[]> {
         return this.httpClient.get<IActivity[]>(this.activitiesUrl).pipe(
             // tap(data => console.log('Treks:' + JSON.stringify(data))),
+            catchError(this.handleError)
+        )
+    }
+
+    getReviews(id: number): Observable<IReview[]> {
+        return this.httpClient.get<IReview[]>(this.reviewsUrl).pipe(
+            map((reviews: IReview[]) => reviews.filter(t => t.eventId === id)),
+            // tap(data => console.log('reviews:' + JSON.stringify(data))),
             catchError(this.handleError)
         )
     }

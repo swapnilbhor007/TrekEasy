@@ -6,6 +6,7 @@ export interface ITrek{
     price: number,
     rating: number,
     imageURL: string,
+    gallery: [string],
     description: string,
     attractions: [string],
     eventDate: Date,

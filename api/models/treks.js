@@ -18,6 +18,9 @@ let Treks = new Schema({
     imageURL: {
         type: String
     },
+    gallery:{
+        type: [String]
+    },
     rating: {
         type: Number
     },

@@ -1,0 +1,56 @@
+[{
+    "id": 1,
+    "eventId": 1,
+    "userId": 1,
+    "name": "Sameer Bhave",
+    "comment": "Awesome experience, whole trek made so easy. Thanks to Trekeasy!",
+    "rating": 4.5
+},
+{
+    "id": 2,
+    "eventId": 1,
+    "userId": 2,
+    "name": "Rohan Belwalkar",
+    "comment": "Wanna do it again. Great view of kokankada, a lifetime experience.",
+    "rating": 4.8
+},
+{
+    "id": 3,
+    "eventId": 2,
+    "userId": 1,
+    "name": "Sameer Bhave",
+    "comment": "Amazing trip, enjoyed it lot, would highly recommend it.",
+    "rating": 4.2
+},
+{
+    "id": 4,
+    "eventId": 2,
+    "userId": 2,
+    "name": "Rohan Belwalkar",
+    "comment": "Awesome experience, whole trek made so easy. Thanks to Trekeasy!",
+    "rating": 4.5
+},
+{
+    "id": 5,
+    "eventId": 1,
+    "userId": 3,
+    "name": "Shashank Adsul",
+    "comment": "Amazing trip, enjoyed it lot, would highly recommend it.",
+    "rating": 4.7
+},
+{
+    "id": 6,
+    "eventId": 3,
+    "userId": 1,
+    "name": "Sameer Bhave",
+    "comment": "Awesome experience, whole trek made so easy. Thanks to Trekeasy!",
+    "rating": 3.8
+},
+{
+    "id": 7,
+    "eventId": 3,
+    "userId": 3,
+    "name": "Shashank Adsul",
+    "comment": "Amazing trip, enjoyed it lot, would highly recommend it.",
+    "rating": 4.0
+}]
