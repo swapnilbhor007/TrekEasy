@@ -1,0 +1,27 @@
+
+.gallery-container {
+  display: flex;
+  height: 200px;
+}
+
+.gallery-container img {
+    width: 200px;
+    object-fit: cover;
+    margin: 5px;
+  }
+
+.g-overlay {
+  min-width: 320px;
+}
+
+gallery {
+  font-size: 16px;
+}
+
+img {
+  width: 150px;
+}
+
+.lightbox-example, .gallerize-example {
+  margin: 2em;
+}
