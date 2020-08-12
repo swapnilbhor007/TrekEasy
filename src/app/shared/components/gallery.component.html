@@ -1,0 +1,35 @@
+<!-- <div class="grid-item"
+  *ngFor="let item of items; let i = index" [attr.lightbox]="i">
+  <img [src]="item.data.thumbnail">
+</div> -->
+
+
+<!-- The Modal -->
+<div class="modal" [style.display]="showModal ? 'block' : 'none'">
+
+  <!-- The Close Button -->
+  <span class="close" (click)="hide()">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <!-- <img class="modal-content" [src]="imageUrl"> -->
+
+  <div id="details" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div *ngFor='let imgUrl of imageUrls; let i = index' [ngClass] ='i == 0 ? "carousel-item active" : "carousel-item"'>
+        <img class="modal-content" [src]="imgUrl">
+      </div>
+    </div>
+    <a class="carousel-control-prev" *ngIf="imageUrls.length > 1" (click)="moveSlides(-1)" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" *ngIf="imageUrls.length > 1" (click)="moveSlides(1)" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+</div>

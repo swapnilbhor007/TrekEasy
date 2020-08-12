@@ -3,9 +3,8 @@ import { ITrek } from './trek';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TrekService } from './trek.service';
 import { ISchedule } from './schedule';
-import * as $ from 'jquery';
-import 'magnific-popup';
 import { IReview } from './reviews';
+import {GalleryComponent} from '../shared/components/gallery.component';
 
 @Component({
   templateUrl: './trek-detail.component.html',
@@ -20,6 +19,8 @@ export class TrekDetailComponent implements OnInit, AfterViewInit {
   errorMessage: string;
   imagePath: string ='assets/img/treks/';
 
+  @ViewChild(GalleryComponent)
+  private galleryComponent : GalleryComponent;
 
   constructor(private route: ActivatedRoute, private router: Router, private trekService: TrekService) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
@@ -36,24 +37,8 @@ export class TrekDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
-    
-   // $(this.imgElement.nativeElement).magnificPopup({ type: 'image' });
-    
-    $('.img-gal').magnificPopup({
-      type: 'image',
-      gallery: {
-          enabled: true
-      }
-  });
-
-  $('.play-btn').magnificPopup({
-      type: 'iframe',
-      mainClass: 'mfp-fade',
-      removalDelay: 160,
-      preloader: false,
-      fixedContentPos: false
-  });
-  }
+  
+   }
 
   getTrek(id: number) {
     this.trekService.getTrekDetails(id).subscribe({
@@ -85,5 +70,9 @@ export class TrekDetailComponent implements OnInit, AfterViewInit {
 
   onBack(): void {
     this.router.navigate(['/treks']);
+  }
+
+  showGallery(){
+    this.galleryComponent.show();
   }
 }

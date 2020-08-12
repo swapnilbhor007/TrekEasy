@@ -16,7 +16,7 @@
         <div class="row align-items-center" *ngIf='trek'>
             <div class="col-lg-6 insurence-left">
                 <img class="img-fluid img-one" [src]='trek.imageURL' [title]='trek.name'>
-                <a id='viewGallery' class="primary-btn text-uppercase mt-10 mb-10">View Gallery</a>
+                <a id='viewGallery' *ngIf='trek.gallery.length' (click)="showGallery()" class="primary-btn text-uppercase mt-10 mb-10">View Gallery</a>
             </div>
             <div class="col-lg-6 insurence-right">
                 <!-- <a class="primary-btn text-uppercase" (click)='onBack()' style="float: right;">Back</a> -->
@@ -38,35 +38,6 @@
     </div>
 </section>
 <!-- End Content Area -->
-
-<div id="imageGallery" class="section-top-border" *ngIf='trek && trek.gallery.length'>
-    <h3>Image Gallery</h3>
-    <div class="row gallery-item">
-        <div [ngClass]="i % 2 == 0 ? 'col-md-2' : 'col-md-3'" *ngFor='let img of trek.gallery; let i = index;'>
-            <a [href]='imagePath + trek.id + "/" + img' class="img-gal"><div class="single-gallery-image" 
-               [ngStyle]="{'background': 'url(' + imagePath + trek.id + '/' + img + ')'}"></div></a>
-        </div>
-    </div>
-
-    <!-- <div class="row gallery-item">
-        <div class="col-md-4">
-            <a href="assets/img/treks/1/harishchandreshwartemple.jpg" class="img-gal">
-                <div class="single-gallery-image" style="background: url(assets/img/treks/1/harishchandreshwartemple.jpg);"></div></a>
-        </div>
-        <div class="col-md-4">
-            <a href="assets/img/treks/1/panoroma.jpg" class="img-gal">
-                <div class="single-gallery-image" style="background: url(assets/img/treks/1/panoroma.jpg);"></div></a>
-        </div>
-        <div class="col-md-4">
-            <a href="assets/img/treks/1/kedareshwarcave.jpg" class="img-gal">
-                <div class="single-gallery-image" style="background: url(assets/img/treks/1/kedareshwarcave.jpg);"></div></a>
-        </div>
-        <div class="col-md-6">
-            <a href="assets/img/treks/1/kokankada.jpg" class="img-gal">
-                <div class="single-gallery-image" style="background: url(assets/img/treks/1/kokankada.jpg);"></div></a>
-        </div>
-    </div> -->
-</div>
 
 <!--Start Timeline Area-->
 <section class="insurence-one-area section-gap section-top-border" *ngIf='tripSchedule && tripSchedule.schedule'>
@@ -163,3 +134,32 @@
     </div>
 </section>
 <!-- End testimonial Area -->
+
+<div id="imageGallery" class="section-top-border" *ngIf='trek && trek.gallery.length'>
+    <app-gallery [imageUrls]='trek.gallery'></app-gallery>
+    <!-- <div class="row gallery-item">
+        <div [ngClass]="i % 2 == 0 ? 'col-md-2' : 'col-md-3'" *ngFor='let img of trek.gallery; let i = index;'>
+            <a [href]='imagePath + trek.id + "/" + img' class="img-gal"><div class="single-gallery-image" 
+               [ngStyle]="{'background': 'url(' + imagePath + trek.id + '/' + img + ')'}"></div></a>
+        </div>
+    </div> -->
+
+    <!-- <div class="row gallery-item">
+        <div class="col-md-4">
+            <a href="assets/img/treks/1/harishchandreshwartemple.jpg" class="img-gal">
+                <div class="single-gallery-image" style="background: url(assets/img/treks/1/harishchandreshwartemple.jpg);"></div></a>
+        </div>
+        <div class="col-md-4">
+            <a href="assets/img/treks/1/panoroma.jpg" class="img-gal">
+                <div class="single-gallery-image" style="background: url(assets/img/treks/1/panoroma.jpg);"></div></a>
+        </div>
+        <div class="col-md-4">
+            <a href="assets/img/treks/1/kedareshwarcave.jpg" class="img-gal">
+                <div class="single-gallery-image" style="background: url(assets/img/treks/1/kedareshwarcave.jpg);"></div></a>
+        </div>
+        <div class="col-md-6">
+            <a href="assets/img/treks/1/kokankada.jpg" class="img-gal">
+                <div class="single-gallery-image" style="background: url(assets/img/treks/1/kokankada.jpg);"></div></a>
+        </div>
+    </div> -->
+</div>

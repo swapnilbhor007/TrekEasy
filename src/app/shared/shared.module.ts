@@ -5,6 +5,7 @@ import { StarComponent } from './components/star.component';
 import { FormsModule } from '@angular/forms';
 import { TimelineComponent } from './components/timeline.component';
 import { BannerComponent } from '../layout/banner.component';
+import { GalleryComponent } from './components/gallery.component';
 import { ConvertToSpacesPipe } from './pipes/convert-to-spaces.pipe';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ConvertToSpacesPipe } from './pipes/convert-to-spaces.pipe';
     StarComponent,
     TimelineComponent,
     BannerComponent,
+    GalleryComponent,
     ConvertToSpacesPipe
   ],
   exports:[
@@ -24,6 +26,7 @@ import { ConvertToSpacesPipe } from './pipes/convert-to-spaces.pipe';
     StarComponent,
     TimelineComponent,
     BannerComponent,
+    GalleryComponent,
     ConvertToSpacesPipe
   ]
 })
