@@ -1,0 +1,48 @@
+
+    <a *ngIf="!currentUser" class="login-link" (click)="show()">Login / Register </a>
+    <span *ngIf="isLoggedIn && currentUser"> Welcome, {{ currentUser.firstName}} <a class="login-link" (click)="logout()">Logout</a></span>
+
+
+    <!-- Modal -->
+<div class="modal" [style.display]="showModal ? 'block' : 'none'">
+    <div class=" login modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" formControlName="username" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">Username is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <div class="form-group">
+                <button type="submit" [disabled]="loading" class="primary-btn text-uppercase">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
+                </button>
+                <a routerLink="/register" class="primary-btn text-uppercase" style="background: #222;">Register</a>
+            </div>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+

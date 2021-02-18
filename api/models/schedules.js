@@ -15,8 +15,8 @@ let Day = new Schema({
 
 let Schedules = new Schema({
     id: { type: Number },
-    inclusions: [string],
-    exclusions: [string],
+    inclusions: { String },
+    exclusions: { String },
     schedule: { type: [Day]  }
 }, {
     collection: 'Schedules'

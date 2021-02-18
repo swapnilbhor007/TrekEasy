@@ -1,20 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { TrekService } from '../treks/trek.service'
 import { IActivity } from '../home/activities';
+// import {LoginComponent} from '../shared/components/login.component'
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
   activities: IActivity[];
   errorMessage: string;
+
+  // @ViewChild(LoginComponent)
+  // private loginComponent: LoginComponent
 
   constructor(private trekService: TrekService) { }
 
   ngOnInit() {
     this.getActivities();
+  }
+
+  ngAfterViewInit(){
+    
   }
   
   getActivities() {
@@ -24,5 +32,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-
+  // doLogin(){
+  // this.loginComponent.show();
+  // }
 }

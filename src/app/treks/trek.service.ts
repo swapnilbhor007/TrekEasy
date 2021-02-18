@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ITrek } from './trek';
-import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators'
 import { ISchedule } from './schedule';

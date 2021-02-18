@@ -1,0 +1,12 @@
+.login{
+    text-align: left;
+    width: 30%;
+ }
+
+ .login .modal-content {
+    background-color: white;
+ }
+ 
+.login-link{
+    cursor: pointer;
+}

@@ -1,0 +1,24 @@
+[{
+    "id" : 1,
+    "username": "admin@trekeasy.com",
+    "password":"1234",
+    "firstName":"Swapnil",
+    "lastName": "Bhor",
+    "token": "1234"
+},
+{
+    "id" : 2,
+    "username": "user@trekeasy.com",
+    "password":"1234",
+    "firstName":"Sameer",
+    "lastName": "Bhave",
+    "token": "2345"
+},
+{
+    "id" : 3,
+    "username": "test@trekeasy.com",
+    "password":"1234",
+    "firstName":"Shashank",
+    "lastName": "Adsul",
+    "token": "3456"
+}]

@@ -18,7 +18,7 @@ margin-bottom: 20px;
 .sticky{
   position: sticky;
   top: 100px;
-  z-index: 10000;
+  z-index: 1000;
 }
 
 .book-now {
