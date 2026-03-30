@@ -27,7 +27,7 @@ import { LayoutModule } from './layout/layout.module';
       { path: '**', component: ErrorComponent }
     ]
     //, {useHash: false, anchorScrolling: 'enabled'}
-      //, {onSameUrlNavigation: 'reload'}
+    , {onSameUrlNavigation: 'reload'}
     ),
     TrekModule,
     HomeModule
